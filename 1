@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<string.h>
+int main() 
+{
+ int a[100],i=0;
+ while(scanf("%d",&a[i])==1)
+ {
+     i++;
+ }
+ subset(a,i);
+}
+int subset(int a[],int i)
+{
+    int b[i];
+    subsetof(a,b,0,i);
+}
+int subsetof(int a[],int b[],int j,int i)
+{
+    if(j==i)
+    {
+        printsubset(b,i);
+    }
+    else
+    {
+        b[j]=a[j];
+        subsetof(a,b,j+1,i);
+        b[j]='*';
+        subsetof(a,b,j+1,i);
+    }    
+}
+int printsubset(int b[],int i)
+{
+    int m;
+    for(m=0;m<i;m++)
+    {
+        if(b[m]!='*')
+        {
+        printf("%d ",b[m]);
+        }
+    }    
+    printf("\n");
+}
